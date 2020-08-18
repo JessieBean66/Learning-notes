@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="description" content="Description">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <link rel="stylesheet" href="//unpkg.com/docsify/lib/themes/vue.css">
+</head>
+<body>
+  <div id="app">加载中...啊哈哈</div>
+  <script>
+    window.$docsify = {
+      name: '个人学习文档',
+      coverpage: true, // 启用封面页。开启后是加载 _coverpage.md 文件，也可以自定义文件名。
+      onlyCover: true,  // 只在访问主页时加载封面。
+      loadSidebar: true, // 加载自定义侧边栏
+      autoHeader: true, // 同时设置 loadSidebar 和 autoHeader 后，可以根据 _sidebar.md 的内容自动为每个页面增加标题
+      subMaxLevel: 4, // 自定义侧边栏后默认不会再生成目录，你也可以通过设置生成目录的最大层级开启这个功能。
+      auto2top: true, // 切换页面后是否自动跳转到页面顶部
+      search: {
+        maxAge: 86400000, // 过期时间，单位毫秒，默认一天
+        noData: '找不到结果',//搜索不到结果时显示
+        paths: 'auto',//自动
+        placeholder: '搜索',//搜索框提示
+      }
+    }
+  </script>
+  <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
+</body>
+</html>
