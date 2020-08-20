@@ -2,3 +2,8 @@
 * [**重学前端**](Refrontend/)
 * [**重构**](Refactoring/)
 * [**TypeScript**](TypeScript/)
+    * [基础类型](TypeScript/Basic)
+    * [接口](TypeScript/Interface)
+    * [类](TypeScript/Class)
+    * [函数](TypeScript/Function)
+    * [泛型](TypeScript/Generic)
