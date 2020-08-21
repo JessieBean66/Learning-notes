@@ -7,3 +7,7 @@
     * [类](TypeScript/Class)
     * [函数](TypeScript/Function)
     * [泛型](TypeScript/Generic)
+    * [枚举](TypeScript/Enum)
+    * [类型推论](TypeScript/TypeInference)
+    * [类型兼容性](TypeScript/TypeCompatibility)
+    
