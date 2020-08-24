@@ -3,11 +3,6 @@
 > [《Learning TypeScript中文版》]()
 
 
-# 高级类型
-
-# Symbol
-
-# 迭代器和生成器
 
 # 模块
 
