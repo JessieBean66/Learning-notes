@@ -196,14 +196,140 @@ strings.forEach(s => {
 
 ### 生成模块代码
 
+根据编译时指定的模块目标参数，编译器会生成相应的供`Node.js (CommonJS)`，`Require.js (AMD)`，`UMD`，`SystemJS`或`ECMAScript 2015 native modules `(ES6)模块加载系统使用的代码。 想要了解生成代码中 define，require 和 register的意义，请参考相应模块加载器的文档。
+
+下面的例子说明了导入导出语句里使用的名字是怎么转换为相应的模块加载器代码的。
+
+~~~ SimpleModule.ts
+import m = require("mod");
+export let t = m.something + 1;
+~~~
+
+~~~ AMD / RequireJS SimpleModule.js
+define(["require", "exports", "./mod"], function (require, exports, mod_1) {
+    exports.t = mod_1.something + 1;
+});
+~~~
+
+~~~ CommonJS / Node SimpleModule.js
+let mod_1 = require("./mod");
+exports.t = mod_1.something + 1;
+~~~
+
+~~~ UMD SimpleModule.js
+(function (factory) {
+    if (typeof module === "object" && typeof module.exports === "object") {
+        let v = factory(require, exports); if (v !== undefined) module.exports = v;
+    }
+    else if (typeof define === "function" && define.amd) {
+        define(["require", "exports", "./mod"], factory);
+    }
+})(function (require, exports) {
+    let mod_1 = require("./mod");
+    exports.t = mod_1.something + 1;
+});
+~~~
+
+~~~ System SimpleModule.js
+System.register(["./mod"], function(exports_1) {
+    let mod_1;
+    let t;
+    return {
+        setters:[
+            function (mod_1_1) {
+                mod_1 = mod_1_1;
+            }],
+        execute: function() {
+            exports_1("t", t = mod_1.something + 1);
+        }
+    }
+});
+~~~
 
 
+~~~ Native ECMAScript 2015 modules SimpleModule.js
+import { something } from "./mod";
+export let t = something + 1;
+~~~
 
+### 可选的模块加载和其它高级加载场景
 
+某种条件下才加载某个模块。 在TypeScript里，使用下面的方式来实现它和其它的高级加载场景，我们可以直接调用`模块加载器`并且可以保证类型完全。
 
+编译器会检测是否每个模块都会在生成的JavaScript中用到。 如果一个模块标识符只在类型注解部分使用，并且完全没有在表达式中使用时，就不会生成 `require`这个模块的代码。 省略掉没有用到的引用对性能提升是很有益的，并同时提供了选择性加载模块的能力。
 
+这种模式的核心是`import id = require("...")`语句可以让我们访问模块导出的类型。 模块加载器会被动态调用（通过 require），就像下面if代码块里那样。 它利用了省略引用的优化，所以模块只在被需要时加载。 为了让这个模块工作，一定要注意 import定义的标识符只能在表示类型处使用（不能在会转换成JavaScript的地方）。
 
+为了确保类型安全性，我们可以使用`typeof`关键字。 typeof关键字，当在表示类型的地方使用时，会得出一个类型值，这里就表示模块的类型。
 
+~~~ js
+// Node.js里的动态模块加载
+declare function require(moduleName: string): any;
 
+import { ZipCodeValidator as Zip } from "./ZipCodeValidator";
+
+if (needZipValidation) {
+    let ZipCodeValidator: typeof Zip = require("./ZipCodeValidator");
+    let validator = new ZipCodeValidator();
+    if (validator.isAcceptable("...")) { /* ... */ }
+}
+~~~
+
+~~~ js
+// 示例：require.js里的动态模块加载
+declare function require(moduleNames: string[], onLoad: (...args: any[]) => void): void;
+
+import * as Zip from "./ZipCodeValidator";
+
+if (needZipValidation) {
+    require(["./ZipCodeValidator"], (ZipCodeValidator: typeof Zip) => {
+        let validator = new ZipCodeValidator.ZipCodeValidator();
+        if (validator.isAcceptable("...")) { /* ... */ }
+    });
+}
+~~~
+
+~~~ js
+// 示例：System.js里的动态模块加载
+declare const System: any;
+
+import { ZipCodeValidator as Zip } from "./ZipCodeValidator";
+
+if (needZipValidation) {
+    System.import("./ZipCodeValidator").then((ZipCodeValidator: typeof Zip) => {
+        var x = new ZipCodeValidator();
+        if (x.isAcceptable("...")) { /* ... */ }
+    });
+}
+~~~
+
+### 使用其它的JavaScript库
+
+> **外部模块**
+
+在Node.js里大部分工作是通过加载一个或多个模块实现的。 我们可以使用顶级的` export`声明来为每个模块都定义一个`.d.ts`文件，但最好还是写在一个大的.d.ts文件里。 我们使用与构造一个外部命名空间相似的方法，但是这里使用 module关键字并且把名字用引号括起来，方便之后import。 例如：
+
+*模块声明通配符*
+
+*UMD模块*
+
+### 创建模块结构指导
+
+> **尽可能地在顶层导出**
+
+- 如果要导出多个对象，把它们放在顶层里导出
+- 明确地列出导入的名字
+- 使用命名空间导入模式当你要导出大量内容的时候
+
+> **使用重新导出进行扩展**
+
+> **模块里不要使用命名空间**
+
+> **危险信号**
+以下均为模块结构上的危险信号。重新检查以确保你没有在对模块使用命名空间：
+
+- 文件的顶层声明是export namespace Foo { ... } （删除Foo并把所有内容向上层移动一层）
+- 文件只有`一个`export class或export function （考虑使用export default）
+- 多个文件的顶层具有同样的export namespace Foo { （不要以为这些会合并到一个Foo中！）
 
 
