@@ -1,4 +1,5 @@
 * [**数据结构与算法**](structures&algorithms/)
+    * [8 - 栈：如何实现浏览器的前进和后退功能](structures&algorithms/8)
     * [9 - 队列：队列在线程池等有限资源池中的应用](structures&algorithms/9)
     * [10 - 递归：如何用三行代码找到“最终推荐人”](structures&algorithms/10)
     * [11 - 排序（上）：为什么插入排序比冒泡排序更受欢迎](structures&algorithms/11)
@@ -9,6 +10,7 @@
     * [16 - 二分查找（下）：如何快速定位IP对应的省份地址](structures&algorithms/16)
     * [17 - 跳表：为什么Redis一定要用跳表来实现有序集合](structures&algorithms/17)
     * [18 - 散列表（上）：Word文档中的单词拼写检查功能是如何实现的](structures&algorithms/18)
+    * [19 - 散列表（中）：如何打造一个工业级水平的散列表](structures&algorithms/19)
 * [**重学前端**](Refrontend/)
 * [**重构**](Refactoring/)
 * [**TypeScript**](TypeScript/)
