@@ -20,6 +20,7 @@
     * [21 - 哈希算法（上）：如何防止数据库中的用户信息被脱库](structures&algorithms/21)
     * [22 - 哈希算法（下）：哈希算法在分布式系统中有哪些应用](structures&algorithms/22)
     * [23 - 二叉树基础（上）：什么样的二叉树适合用数组来存储](structures&algorithms/23)
+    * [24 - 二叉树基础（下）：有了如此高效的散列表，为什么还需要二叉树](structures&algorithms/24)
 * [**重学前端**](Refrontend/)
 * [**重构**](Refactoring/)
 * [**TypeScript**](TypeScript/)
