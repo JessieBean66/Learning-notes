@@ -1,6 +1,7 @@
 - [**啊哈！算法**](aha_Algorithm/)
 
   - [第四章- 万能的搜索](aha_Algorithm/4)
+  - [第五章- 图的遍历](aha_Algorithm/5)
   - [第六章- 最短路径](aha_Algorithm/6)
 
 - [**数据结构与算法**](structures&algorithms/)
