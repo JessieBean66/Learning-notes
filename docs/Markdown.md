@@ -10,17 +10,17 @@
 
 ?> _TODO_ 完善示例
 
-
 > 行内格式
 
-**加黑**    *斜体*
+**加黑** _斜体_
 
 > 引用块
 
 > 引用块段落一。
 >
 > 引用块段落二。
->> 内嵌引用块段落一。
+>
+> > 内嵌引用块段落一。
 >
 > ### 引用块内的标题
 
@@ -39,22 +39,20 @@
 
 > 水平分割线
 
-使用一个单独行里的三个或以上 *、- 来生产一条水平分割线，它们之间可以有空格
-***
+使用一个单独行里的三个或以上 \*、- 来生产一条水平分割线，它们之间可以有空格
 
------
+---
 
-- - -
+---
+
+---
 
 > 表格
 
-| 编号  | 姓名（左） | 年龄（右） | 性别（中） |
-| ----- | :--------  | ---------: | :------:   |
-| 0     | 张三       | 28         | 男         |
-| 1     | 李四       | 29         | 男         |
-
-
-
+| 编号 | 姓名（左） | 年龄（右） | 性别（中） |
+| ---- | :--------- | ---------: | :--------: |
+| 0    | 张三       |         28 |     男     |
+| 1    | 李四       |         29 |     男     |
 
 > Github 任务列表
 
@@ -69,27 +67,22 @@
 
 缩放
 
-![logo](https://docsify.js.org/_media/icon.svg ':size=WIDTHxHEIGHT')
-![logo](https://docsify.js.org/_media/icon.svg ':size=50x100')
-![logo](https://docsify.js.org/_media/icon.svg ':size=100')
+![logo](https://docsify.js.org/_media/icon.svg ":size=WIDTHxHEIGHT")
+![logo](https://docsify.js.org/_media/icon.svg ":size=50x100")
+![logo](https://docsify.js.org/_media/icon.svg ":size=100")
 
 <!-- 支持按百分比缩放 -->
 
-![logo](https://docsify.js.org/_media/icon.svg ':size=10%')
+![logo](https://docsify.js.org/_media/icon.svg ":size=10%")
 
-> 设置图片的 Class或ID
+> 设置图片的 Class 或 ID
 
-![logo](https://docsify.js.org/_media/icon.svg ':class=someCssClass')    
-![logo](https://docsify.js.org/_media/icon.svg ':id=someCssId')
+![logo](https://docsify.js.org/_media/icon.svg ":class=someCssClass")
+![logo](https://docsify.js.org/_media/icon.svg ":id=someCssId")
 
 > 设置标题的 id 属性
 
 ### 你好，世界！ :id=hello-world
-
-
-
-
-
 
 > 忽略编译链接
 
@@ -101,18 +94,15 @@
 
 现在你可以做到这一点
 
-[link](/demo/ ':ignore')
+[link](/demo/ ":ignore")
 即将会得到 <a href="/demo/">link</a> html 代码。不要担心，你仍然可以为链接设置标题。
 
-[link](/demo/ ':ignore title')
+[link](/demo/ ":ignore title")
 
 <a href="/demo/" title="title">link</a>
 
-
 > 设置链接的 target 属性
 
-[link:target=_blank](/demo ':target=_blank')
+[link:target=\_blank](/demo ":target=_blank")
 
-[link:target=_self](/demo2 ':target=_self')
-
-
+[link:target=\_self](/demo2 ":target=_self")
