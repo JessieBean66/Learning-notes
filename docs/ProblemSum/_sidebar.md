@@ -4,4 +4,5 @@
 * [**TypeScript**](TypeScript/)
 * [**问题汇总**](ProblemSum/)
     * [JS常见问题](ProblemSum/JS)
+    * [前端性能优化原理与事件--掘金小册](ProblemSum/Performance.md)
 * [**CSS**](CSS/)
