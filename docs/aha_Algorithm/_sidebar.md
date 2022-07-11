@@ -4,6 +4,7 @@
   - [第五章- 图的遍历](aha_Algorithm/5)
   - [第六章- 最短路径](aha_Algorithm/6)
   - [第七章- 神奇的树](aha_Algorithm/7)
+  - [第八章- 更多精彩算法](aha_Algorithm/8)
 
 - [**数据结构与算法**](structures&algorithms/)
 - [**重学前端**](Refrontend/)
